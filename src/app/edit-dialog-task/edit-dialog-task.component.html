@@ -1,0 +1,27 @@
+<h1 class="title">Edit Task</h1>
+<div class="" mat-dialog-content>
+    <form action="" #form="ngForm" (ngSubmit)="onFormSubmit(form)">
+        <div class="control">
+            <input type="text" #taskTextField="ngModel" class="input" [ngModel]="task.text" name="text" required minlength="2" placeholder="Type task text here">
+        </div>
+        
+        <div *ngIf="taskTextField.invalid">
+            <p class="help is-danger" *ngIf="taskTextField.errors?.['required']">Please enter the text of your Task</p>
+            <p class="help is-danger" *ngIf="taskTextField.errors?.['minlength']">Task text must be at least 2 characters</p>
+        </div>
+
+        <br>
+
+        <div class="field is-grouped is-grouped-right">
+            <div class="control">
+                <button class="button is-light" type="button" (click)="close()">Cancel</button>
+            </div>
+
+            <div class="control">
+                <button class="button alt-gradient-button" type="submit">
+                    <i class="material-icons">save</i>
+                    Save</button>
+            </div>
+        </div>
+    </form>
+</div>
